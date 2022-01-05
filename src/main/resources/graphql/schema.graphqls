@@ -1,0 +1,29 @@
+
+type BusStop {
+    id: ID!,
+    name: String
+}
+
+type FishnetCell {
+    id: ID!
+    home: Int,
+    work: Int,
+    minStopDist: Float
+}
+
+type KPI_01 {
+    homeReachable: Int,
+    workReachable: Int,
+    homeTotal: Int,
+    workTotal: Int,
+    homeRatio: Float,
+    workRatio: Float
+}
+
+type Query {
+    busStops: [BusStop]
+    busStop(id: ID): BusStop
+    fishnetCells: [FishnetCell]
+    fishnetCell(id: ID): FishnetCell
+    kpi_01(slider: Int): KPI_01
+}
