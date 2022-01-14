@@ -1,6 +1,9 @@
 package DataServer.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
@@ -16,23 +19,29 @@ import java.util.Objects;
 @RequiredArgsConstructor
 
 @Entity
-@Table(name = "bus_stops")
-public class BusStop implements Serializable {
+@Table(name = "routes")
+public class Route implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Column(name = "stop_id", nullable = false)
+    @Column(name = "track_id", nullable = false)
     //@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "name", nullable = false)
-    private String name;
+
+
+
+    @Column(name = "short_name")
+    private String shortName;
+    @Column(name = "long_name")
+    private String longName;
+
 
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        BusStop busStop = (BusStop) o;
-        return id != 0 && Objects.equals(id, busStop.id);
+        Route route = (Route) o;
+        return id != 0 && Objects.equals(id, route.id);
     }
 
     @Override
@@ -40,4 +49,3 @@ public class BusStop implements Serializable {
         return getClass().hashCode();
     }
 }
-

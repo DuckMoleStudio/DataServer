@@ -1,29 +1,21 @@
 
-type BusStop {
-    id: ID!,
-    name: String
-}
 
-type FishnetCell {
+type Route {
     id: ID!
-    home: Int,
-    work: Int,
-    minStopDist: Float
+    shortName: String,
+    longName: String
 }
 
-type KPI_01 {
-    homeReachable: Int,
-    workReachable: Int,
-    homeTotal: Int,
-    workTotal: Int,
-    homeRatio: Float,
-    workRatio: Float
+type KPI {
+    reachableStops: Int,
+    reachableMetroBus: Int,
+    reachableMetroBusFoot: Int,
+    reachableMetroCar: Int,
+    totalPopulation: Int
 }
 
 type Query {
-    busStops: [BusStop]
-    busStop(id: ID): BusStop
-    fishnetCells: [FishnetCell]
-    fishnetCell(id: ID): FishnetCell
-    kpi_01(slider: Int): KPI_01
+    routes: [Route]
+    route(id: ID): Route
+    kpi(limitStops: Int, limitMetroBus: Int, limitMetroBusFoot: Int, limitMetroCar: Int): KPI
 }

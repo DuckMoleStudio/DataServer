@@ -32,6 +32,14 @@ public class FishnetCell implements Serializable {
 
     @Column(name = "min_dist_to_stop")
     private double minStopDist;
+    @Column(name = "min_dist_to_metro")
+    private double metroSimple;
+    @Column(name = "min_dist_to_metro_full")
+    private double metroFull;
+    @Column(name = "nearest_metro")
+    private String nearestMetro;
+    @Column(name = "min_dist_to_metro_car")
+    private double metroCar;
 
     @Override
     public boolean equals(Object o) {
