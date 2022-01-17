@@ -1,21 +1,28 @@
 
 
-type Route {
-    id: ID!
-    shortName: String,
-    longName: String
-}
-
-type KPI {
-    reachableStops: Int,
-    reachableMetroBus: Int,
-    reachableMetroBusFoot: Int,
-    reachableMetroCar: Int,
-    totalPopulation: Int
-}
-
 type Query {
     routes: [Route]
     route(id: ID): Route
-    kpi(limitStops: Int, limitMetroBus: Int, limitMetroBusFoot: Int, limitMetroCar: Int): KPI
+    kpi(limitBusStopsFoot: Int, limitToMetroBus: Int, limitToMetroBusFoot: Int,  limitToMetroCar: Int): KPI
+}
+
+type Route {
+    id: ID!
+    shortName: String
+    longName: String
+    regNum: String
+    routeType: String
+}
+
+type KPI {
+    busStopsFootHome: Int!,
+    busStopsFootWork: Int!,
+    toMetroBusHome: Int!,
+    toMetroBusWork: Int!,
+    toMetroBusFootHome: Int!,
+    toMetroBusFootWork: Int!,
+    toMetroCarHome: Int!,
+    toMetroCarWork: Int!,
+    homeTotal: Int!,
+    workTotal: Int!,
 }

@@ -11,11 +11,11 @@ public class KPIQuery implements GraphQLQueryResolver {
     @Autowired
     private KPIService kpi_Service;
 
-    public KPI getKpi(final int limitStops,
-                      final int limitMetroBus,
-                      final int limitMetroBusFoot,
-                      final int limitMetroCar)
+    public KPI getKpi(final int limitBusStopsFoot,
+                      final int limitToMetroBus,
+                      final int limitToMetroBusFoot,
+                      final int limitToMetroCar)
     {
-        return this.kpi_Service.getKPI(limitStops,limitMetroBus,limitMetroBusFoot,limitMetroCar);
+        return this.kpi_Service.getKPI(limitBusStopsFoot,limitToMetroBus,limitToMetroBusFoot,limitToMetroCar);
     }
 }

@@ -23,36 +23,61 @@ public class KPIService {
                       final int limitMetroCar) {
 
 
-        int reachableStops = 0;
-        int reachableMetroBus = 0;
-        int reachableMetroBusFoot = 0;
-        int reachableMetroCar = 0;
+        int reachableStopsHome = 0;
+        int reachableMetroBusHome = 0;
+        int reachableMetroBusFootHome = 0;
+        int reachableMetroCarHome = 0;
 
         int homeTotal = 0;
+
+        int reachableStopsWork = 0;
+        int reachableMetroBusWork = 0;
+        int reachableMetroBusFootWork = 0;
+        int reachableMetroCarWork = 0;
+
+        int workTotal = 0;
 
         List<FishnetCell> allCells = this.fishnetCellService.getAllFishnetCells();
 
         for(FishnetCell cell: allCells)
         {
             homeTotal+=cell.getHome();
+            workTotal+=cell.getWork();
 
             if(cell.getMinStopDist()<=limitStops)
-               reachableStops+=cell.getHome();
+            {
+                reachableStopsHome+=cell.getHome();
+                reachableStopsWork+=cell.getWork();
+            }
             if(cell.getMetroSimple()<=limitMetroBus)
-                reachableMetroBus+=cell.getWork();
+            {
+                reachableMetroBusHome+=cell.getHome();
+                reachableMetroBusWork+=cell.getWork();
+            }
             if(cell.getMetroFull()<=limitMetroBusFoot)
-                reachableMetroBusFoot+=cell.getWork();
+            {
+                reachableMetroBusFootHome+=cell.getHome();
+                reachableMetroBusFootWork+=cell.getWork();
+            }
             if(cell.getMetroCar()<=limitMetroCar)
-                reachableMetroCar+=cell.getWork();
+            {
+                reachableMetroCarHome+=cell.getHome();
+                reachableMetroCarWork+=cell.getWork();
+            }
 
         }
 
         KPI result = new KPI();
-        result.setReachableStops(reachableStops);
-        result.setReachableMetroBus(reachableMetroBus);
-        result.setReachableMetroBusFoot(reachableMetroBusFoot);
-        result.setReachableMetroCar(reachableMetroCar);
-        result.setTotalPopulation(homeTotal);
+        result.setBusStopsFootHome(reachableStopsHome);
+        result.setBusStopsFootWork(reachableStopsWork);
+        result.setToMetroBusHome(reachableMetroBusHome);
+        result.setToMetroBusWork(reachableMetroBusWork);
+        result.setToMetroBusFootHome(reachableMetroBusFootHome);
+        result.setToMetroBusFootWork(reachableMetroBusFootWork);
+        result.setToMetroCarHome(reachableMetroCarHome);
+        result.setToMetroCarWork(reachableMetroCarWork);
+        result.setHomeTotal(homeTotal);
+        result.setWorkTotal(workTotal);
 
         return result;
     }

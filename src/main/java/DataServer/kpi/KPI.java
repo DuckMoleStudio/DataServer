@@ -8,9 +8,14 @@ import lombok.*;
 @RequiredArgsConstructor
 
 public class KPI {
-    int reachableStops;
-    int reachableMetroBus;
-    int reachableMetroBusFoot;
-    int reachableMetroCar;
-    int totalPopulation;
+    int busStopsFootHome;
+    int busStopsFootWork;
+    int toMetroBusHome;
+    int toMetroBusWork;
+    int toMetroBusFootHome;
+    int toMetroBusFootWork;
+    int toMetroCarHome;
+    int toMetroCarWork;
+    int homeTotal;
+    int workTotal;
 }

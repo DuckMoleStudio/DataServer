@@ -6,10 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -34,7 +31,10 @@ public class Route implements Serializable {
     @Column(name = "long_name")
     private String longName;
 
-
+    @Transient
+    private String regNum = "--";
+    @Transient
+    private String routeType = "--";
 
     @Override
     public boolean equals(Object o) {
