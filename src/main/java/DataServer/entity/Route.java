@@ -31,6 +31,9 @@ public class Route implements Serializable {
     @Column(name = "long_name")
     private String longName;
 
+    @Column(name = "route_dir")
+    private String dir;
+
     @Transient
     private String regNum = "--";
     @Transient

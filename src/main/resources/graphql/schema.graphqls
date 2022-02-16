@@ -10,6 +10,7 @@ type Route {
     id: ID!
     shortName: String
     longName: String
+    dir: String
     regNum: String
     routeType: String
 }
